@@ -1,0 +1,17 @@
+{
+  "name": "spinning-wheel-generator",
+  "version": "1.0.0",
+  "description": "A dynamic spinning wheel game that allows users to add or remove sectors.",
+  "main": "src/js/wheel.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "live-server src"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "live-server": "^1.2.1"
+  },
+  "author": "",
+  "license": "ISC"
+}

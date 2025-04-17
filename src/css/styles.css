@@ -1,0 +1,361 @@
+/* Declaración de la fuente */
+@font-face {
+    font-family: 'Game Bubble';
+    src: url('../fonts/GameBubble.ttf') format('truetype');
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+
+.config-button {
+    display: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #ffff00;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    overflow-y: auto; /* Permite scroll vertical en el modal */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* Reducido de 15% a 5% para dar más espacio */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    position: relative;
+    max-height: 90vh; /* Altura máxima del 90% de la ventana */
+}
+
+.setup-section {
+    padding: 20px;
+    max-height: calc(90vh - 40px); /* Altura máxima considerando el padding */
+}
+
+#sectorInputs {
+    max-height: 60vh; /* Altura máxima para los inputs */
+    overflow-y: auto; /* Permite scroll en la sección de inputs */
+    padding-right: 10px; /* Espacio para la barra de scroll */
+}
+
+.sector-input {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: white;
+    border: 3px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+.spin-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#spin:active {
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+#spinWheel {
+    position: relative;
+    display: inline-block;
+}
+
+#wheel {
+    border: 5px solid black;
+    border-radius: 50%;
+}
+
+.wheel-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#winner {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+button {
+    padding: 8px 16px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+input {
+    padding: 5px;
+    margin: 5px;
+}
+
+
+/*-------------------Lista lateral------------------*/
+.content-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 0px; /* Para alinear con la ruleta */
+    max-height: 500px; /* Altura máxima */
+    overflow-y: auto; /* Scroll si hay muchos participantes */
+    align-self: center;
+}
+
+.participants-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.participant-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.participant-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.participant-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.participant-wins {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.remove-btn {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.2s;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Asegurar que el modal aparezca por encima */
+.modal {
+    z-index: 1000;
+}
+
+
+/*MODAL DEL GANADOR*/
+
+.winner-modal .modal-content {
+    background-color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.winner-title {
+    font-family: 'Game Bubble', cursive;
+    font-size: 48px;
+    color: #FFD700;
+    text-shadow: 
+        .8px .8px 0 #000,
+        -.8px -.8px 0 #000,
+        .8px -.8px 0 #000,
+        -.8px .8px 0 #000;
+    margin-bottom: 20px;
+    animation: bounce 0.5s ease;
+    letter-spacing: 2px;
+}
+
+.winner-number {
+    font-size: 72px;
+    font-weight: bold;
+    color: #000;
+    margin: 20px 0;
+    animation: scale-in 0.5s ease;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    opacity: 0;
+}
+
+@keyframes bounce {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes scale-in {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Estilos para el nuevo botón */
+.new-wheel-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #ffff00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.new-wheel-btn:hover {
+    opacity: 1;
+}
+
+/* Media Queries para móviles */
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        padding: 10px;
+        gap: 15px;
+        min-height: auto;
+    }
+
+    .wheel-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #wheel {
+        width: 300px;
+        height: 300px;
+    }
+
+    #spin {
+        width: 60px;
+        height: 60px;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-top: 20px;
+        max-height: 300px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+        max-height: 80vh;
+    }
+
+    .winner-modal .modal-content {
+        padding: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 80px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .winner-title {
+        font-size: 36px;
+    }
+
+    .winner-number {
+        font-size: 54px;
+    }
+
+    .new-wheel-btn {
+        position: static;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #sectorInputs {
+        max-height: 40vh;
+    }
+}

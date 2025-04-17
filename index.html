@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ruleta Personalizable</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="src/css/styles.css">
+    </head>
+<body>
+    <div class="main-container">
+        <button id="openConfig" class="config-button">Configurar Ruleta</button>
+        
+        <div class="wheel-section">
+            <div id="spinWheel">
+                <canvas id="wheel" width="400" height="400"></canvas>
+                <div id="spin">
+                    <img src="./Logo.png" alt="Girar" class="spin-logo">
+                </div>
+            </div>
+            <div id="winner"></div>
+        </div>
+
+        <div class="sidebar">
+            <h3>Registro de Participantes</h3>
+            <div class="participants-list" id="participantsList">
+                <!-- La lista se generará dinámicamente -->
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <button id="newWheel" class="new-wheel-btn">Nueva Ruleta</button>
+
+    <!-- Modal -->
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="setup-section">
+                <h2>Configuración de la Ruleta</h2>
+                <div class="input-group">
+                    <label for="sectorCount">Número de sectores:</label>
+                    <input type="number" id="sectorCount" min="2" max="36">
+                    <button id="generateInputs">Generar campos</button>
+                </div>
+                <div id="sectorInputs"></div>
+                <button id="createWheel">Crear Ruleta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal del Ganador -->
+    <div id="winnerModal" class="modal winner-modal">
+        <div class="modal-content winner-content">
+            <div class="confetti-container"></div>
+            <h2 class="winner-title">¡FELICIDADES!</h2>
+            <div id="winnerNumber" class="winner-number"></div>
+        </div>
+    </div>
+
+    <script type="module" src="src/js/main.js"></script>
+</body>
+</html>
