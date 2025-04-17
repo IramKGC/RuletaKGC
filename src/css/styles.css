@@ -113,6 +113,20 @@ body {
     display: inline-block;
 }
 
+.wheel-arrow {
+    position: absolute;
+    top: 5px; /* Cambiado para ponerla dentro de la ruleta */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 15px solid rgba(255, 255, 0, 1); /* Amarillo semi-transparente para más elegancia */
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
+    z-index: 1;
+}
+
 #wheel {
     border: 5px solid black;
     border-radius: 50%;
@@ -357,5 +371,12 @@ input {
 
     #sectorInputs {
         max-height: 40vh;
+    }
+
+    .wheel-arrow {
+        top: 5px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 10px solid rgba(255, 255, 0, 0.8);
     }
 }
